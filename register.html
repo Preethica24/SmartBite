@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - Food Order</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+     /* background: linear-gradient(to right, #ffcc70, #ff7b54);*/
+       background: linear-gradient(135deg, #00c853, #b2ff59); /* Radiant Green */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .signup-box {
+      background: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .signup-box h2 {
+      text-align: center;
+      color: #2ecc71;
+      margin-bottom: 25px;
+    }
+
+    .signup-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .signup-box button {
+      width: 100%;
+      padding: 12px;
+      background-color: #2ecc71;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .signup-box button:hover {
+      background-color: #2ecc71;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-box">
+    <h2>Create Account</h2>
+    <form id="registerForm">
+      <input type="text" id="username" placeholder="Enter your name" required />
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <input type="password" id="password" placeholder="Enter password" required />
+      <input type="password" id="confirmPassword" placeholder="Confirm password" required />
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (password !== confirmPassword) {
+        alert('❌ Passwords do not match!');
+        return;   
+      }
+
+      alert('✅ Registration successful!');
+      window.location.href = 'menu.html'; // Redirect to menu page
+    });
+  </script>
+</body>
+</html>

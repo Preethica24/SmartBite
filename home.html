@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartBite - Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    nav {
+      background-color: #2ecc71;
+      padding: 1rem 2rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .home-hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+      background: linear-gradient(to right, #2ecc71, #27ae60);
+      color: white;
+      min-height: 80vh;
+      text-align: center;
+    }
+
+    .home-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .home-hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .start-ordering-btn {
+      background: white;
+      color: #27ae60;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .start-ordering-btn:hover {
+      background-color: #e8f5e9;
+    }
+
+    footer {
+      background: #222;
+      color: #eee;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="offer.html">Offers</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <section class="home-hero">
+    <div>
+      <h1>Welcome to SmartBite</h1>
+      <p>Order food easily from your table with no wait time. Just sit back, relax, and tap to order!</p>
+      <!-- ✅ This button will open the full menu page -->
+      <a href="login.html" class="start-ordering-btn">Start Ordering</a>
+    </div>
+  </section>
+</body>
+</html>

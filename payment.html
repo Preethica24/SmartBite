@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartBite - Payment</title>
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(to bottom right, #a8e063, #56ab2f); /* Green gradient */
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .payment-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 320px;
+    }
+
+    h2 {
+      color: #2ecc71;
+      margin-bottom: 1rem;
+    }
+
+    .total {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin: 1rem 0;
+      color: #333;
+    }
+
+    .qr-code {
+      margin: 1.5rem 0;
+    }
+
+    .qr-code img {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .thank-you {
+      color: #27ae60;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .home-btn {
+      margin-top: 1.5rem;
+      padding: 10px 20px;
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .home-btn:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="payment-box">
+    <h2>Payment Page</h2>
+    <div class="total" id="totalAmount">Total: ₹0</div>
+    <div class="qr-code">
+      <!-- Static saved image -->
+      <img src="qr.jpeg" id="qrImage" alt="QR Code">
+    </div>
+    <div class="thank-you">Thank you for ordering with SmartBite! 💚</div>
+    <button class="home-btn" onclick="goHome()">Back to Home</button>
+  </div>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let total = 0;
+
+    cart.forEach(item => {
+      total += item.price * item.quantity;
+    });
+
+    document.getElementById('totalAmount').textContent = `Total: ₹${total}`;
+    
+    function goHome() {
+      localStorage.removeItem('cart'); // Clear cart after payment
+      window.location.href = "home.html";
+    }
+  </script>
+
+</body>
+</html>

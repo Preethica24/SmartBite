@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartBite - Reviews</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+          background: linear-gradient(to bottom right, #a8e063, #56ab2f); /* Green gradient */
+    }
+
+    nav {
+      background-color: #2ecc71;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: #2ecc71;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input, textarea, select {
+      padding: 12px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 100%;
+      box-sizing: border-box;
+      appearance: none;
+    }
+
+    select {
+      background-color: white;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #27ae60;
+    }
+
+    .reviews {
+      margin-top: 2rem;
+    }
+
+    .review {
+      background: #f4f4f4;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .review strong {
+      color: #27ae60;
+    }
+
+    .stars {
+      color: #f1c40f;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Popup modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content h3 {
+      color: #2ecc71;
+    }
+
+    .close-btn {
+      margin-top: 1rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background-color: #2ecc71;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+ 
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="offer.html">Offers</a>
+    <a href="review.html">Reviews</a>
+  </nav>
+
+  <div class="container">
+    <h2>Leave a Review</h2>
+    <form id="reviewForm">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <select id="rating" required>
+        <option value="">Select Rating</option>
+        <option value="5">★★★★★ (5)</option>
+        <option value="4">★★★★☆ (4)</option>
+        <option value="3">★★★☆☆ (3)</option>
+        <option value="2">★★☆☆☆ (2)</option>
+        <option value="1">★☆☆☆☆ (1)</option>
+      </select>
+      <textarea id="message" placeholder="Place Your Experience" required></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
+
+    <div class="reviews" id="reviewList">
+      <!-- Reviews will be added here -->
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="thankModal">
+    <div class="modal-content">
+      <h3>Thank you for your rating! 😊</h3>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const reviewForm = document.getElementById("reviewForm");
+    const reviewList = document.getElementById("reviewList");
+    const thankModal = document.getElementById("thankModal");
+
+    function getStars(rating) {
+      return "★".repeat(rating) + "☆".repeat(5 - rating);
+    }
+
+    window.onload = () => {
+      const saved = JSON.parse(localStorage.getItem("reviews")) || [];
+      saved.forEach(addReviewToPage);
+    };
+
+    reviewForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const rating = parseInt(document.getElementById("rating").value);
+      const message = document.getElementById("message").value;
+
+      const review = { name, rating, message };
+      addReviewToPage(review);
+
+      const existing = JSON.parse(localStorage.getItem("reviews")) || [];
+      existing.push(review);
+      localStorage.setItem("reviews", JSON.stringify(existing));
+
+      reviewForm.reset();
+      showModal();
+    });
+
+    function addReviewToPage({ name, rating, message }) {
+      const div = document.createElement("div");
+      div.classList.add("review");
+      div.innerHTML = `
+        <div class="stars">${getStars(rating)}</div>
+        <strong>${name}</strong>
+        <p>${message}</p>
+      `;
+      reviewList.prepend(div);
+    }
+
+    function showModal() {
+      thankModal.style.display = "flex";
+    }
+
+    function closeModal() {
+      thankModal.style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartBite - Menu</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(to bottom right, #a8e063, #56ab2f); /* Green gradient */
+    }
+
+    nav {
+      background-color: #2ecc71;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    h2 {
+      color: #2ecc71;
+      margin-top: 3rem;
+    }
+
+    .menu-section {
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height:280px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      color: #27ae60;
+      margin: 0.5rem 0;
+    }
+
+    .price {
+      color: #333;
+      font-weight: bold;
+      margin: 0.2rem 0;
+    }
+
+    .ingredients {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .stars {
+      color: #f1c40f;
+      font-size: 1rem;
+    }
+
+    .order-btn {
+      margin-top: 0.5rem;
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .order-btn:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo"><strong>SmartBite</strong></div>
+    <div>
+      <a href="home.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="offer.html">Offers</a>
+      <a href="review.html">Reviews</a>
+      <a href="cart.html">Cart</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="menu-section">
+      <h2>Spicy Foods - Veg</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="panner-tikka.jpg" alt="Paneer Tikka" />
+          <h3>Paneer Tikka</h3>
+          <p class="price">₹149</p>
+          <p class="ingredients">Paneer, bell pepper, spicy marinade</p>
+          <div class="stars">★★★★☆</div>
+          <button class="order-btn" onclick="addToCart('Paneer Tikka', 130)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <img src="veg-manchurian.jpg" alt="Veg Manchurian" />
+          <h3>Veg Manchurian</h3>
+          <p class="price">₹110</p>
+          <p class="ingredients">Vegetables, soy sauce, garlic</p>
+          <div class="stars">★★★★☆</div>
+          <button class="order-btn" onclick="addToCart('Veg Manchurian', 110)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h2>Spicy Foods - Non Veg</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="spicy-chicken-wings.jpg" alt="Spicy Chicken Wings" />
+          <h3>Spicy Chicken Wings</h3>
+          <p class="price">₹159</p>
+          <p class="ingredients">Chicken, chili sauce, spices</p>
+          <div class="stars">★★★★★</div>
+          <button class="order-btn" onclick="addToCart('Spicy Chicken Wings', 150)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <img src="chilli-chicken.webp" alt="Chili Chicken" />
+          <h3>Chili Chicken</h3>
+          <p class="price">₹129</p>
+          <p class="ingredients">Chicken, capsicum, soy & chili sauce</p>
+          <div class="stars">★★★★☆</div>
+          <button class="order-btn" onclick="addToCart('Chili Chicken', 140)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h2>Brownie with Ice Cream</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="browine-icecream" alt="Brownie Vanilla" />
+          <h3>Brownie with Ice Cream</h3>
+          <p class="price">₹149</p>
+          <p class="ingredients">Brownie, vanilla ice cream, chocolate syrup</p>
+          <div class="stars">★★★★★</div>
+          <button class="order-btn" onclick="addToCart('Classic Brownie with Vanilla Ice Cream', 120)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <img src="brownie.jpg" alt="Chocolate Fudge Brownie" />
+          <h3>Chocolate Fudge Brownie</h3>
+          <p class="price">₹129</p>
+          <p class="ingredients">Chocolate, fudge, strawberry</p>
+          <div class="stars">★★★★★</div>
+          <button class="order-btn" onclick="addToCart('Chocolate Fudge Brownie', 130)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h2>Milkshakes</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="chocolate-milkshake.avif" alt="Chocolate Milkshake" />
+          <h3>Chocolate Milkshake</h3>
+          <p class="price">₹99</p>
+          <p class="ingredients">Milk, chocolate, ice cream</p>
+          <div class="stars">★★★★☆</div>
+          <button class="order-btn" onclick="addToCart('Chocolate Milkshake', 90)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <img src="strawberry-milkshake.avif" alt="Strawberry Milkshake" />
+          <h3>Strawberry Milkshake</h3>
+          <p class="price">₹90</p>
+          <p class="ingredients">Milk, strawberry pulp, ice cream</p>
+          <div class="stars">★★★★☆</div>
+          <button class="order-btn" onclick="addToCart('Strawberry Milkshake', 90)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <img src="banana-milkshake.avif" alt="Banana Milkshake" />
+          <h3>Banana Milkshake</h3>
+          <p class="price">₹80</p>
+          <p class="ingredients">Banana, milk, ice cream</p>
+          <div class="stars">★★★☆☆</div>
+          <button class="order-btn" onclick="addToCart('Banana Milkshake', 80)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <h2>Mojito Drinks</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="mojito.jpg" alt="Classic Mojito" />
+          <h3>Classic Mojito</h3>
+          <p class="price">₹79</p>
+          <p class="ingredients">Lime, mint, soda</p>
+          <div class="stars">★★★★☆</div>
+          <button class="order-btn" onclick="addToCart('Classic Mojito', 60)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <img src="blue.avif" alt="Blue Mojito" />
+          <h3>Blue Mojito</h3>
+          <p class="price">₹119</p>
+          <p class="ingredients">Blue syrup, blueberry, soda</p>
+          <div class="stars">★★★★★</div>
+          <button class="order-btn" onclick="addToCart('Blue Mojito', 70)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <img src="strawberry-mojito.avif" alt="Strawberry Mojito" />
+          <h3>Strawberry Mojito</h3>
+          <p class="price">₹85</p>
+          <p class="ingredients">Strawberry, mint, lime, soda</p>
+          <div class="stars">★★★★☆</div>
+          <button class="order-btn" onclick="addToCart('Strawberry Mojito', 75)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let index = cart.findIndex(item => item.name === name);
+      if (index !== -1) {
+        cart[index].quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${name} added to cart`);
+    }
+  </script>
+
+</body>
+</html>
